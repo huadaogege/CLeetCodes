@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         let newList = addTwoNumbers(l1: list1, l2: list2)
         printListNode(list: newList!)
         
+        // 题目三
+        let s = "abcdeababcabcd"
+        let (max, subString) = maxLengthOfSubString(string: s)
+        print(max, subString)
         
         
         

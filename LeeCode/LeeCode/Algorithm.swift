@@ -110,3 +110,28 @@ func addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode? {
     return sum.next
 }
 
+//MARK: 题目三：最长无重复子串
+
+/// 题目描述：给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度
+/// 思路：根据滑动窗口方式，依次遍历字符串字符放入数组中，并实时更新最长字符串长度，
+///      当判断到下一个字符已经包含该数组中，清空数组，继续遍历
+/// - Parameter string: 原始字符串
+/// - Returns: 最长子串长度 + 子串元素数组
+func maxLengthOfSubString(string: String) -> (Int, Array<Character>) {
+    var strArr = Array<Character>()
+    var maxLength = 0
+    var maxSubStrArr = Array<Character>()
+    
+    for char in string {
+        if strArr.contains(char) {
+            strArr.removeAll()
+        }
+        strArr.append(char)
+        if strArr.count > maxLength {
+            maxLength = strArr.count
+            maxSubStrArr = strArr
+        }
+    }
+    return (maxLength, maxSubStrArr)
+}
+
