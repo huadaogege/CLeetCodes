@@ -135,3 +135,25 @@ func maxLengthOfSubString(string: String) -> (Int, Array<Character>) {
     return (maxLength, maxSubStrArr)
 }
 
+//MARK: 题目四：求两个正序数组的中位数
+
+func middleOfTwoList(list1:Array<Int>, list2:Array<Int>) -> Float {
+    var sumArr = [Int](repeating:0, count:(list1.count + list2.count))
+    var i = 0
+    var j = 0
+    for (index, _) in sumArr.enumerated() {
+        if (i < list1.count && list1[i] <= list2[j]) || j >= list2.count {
+            sumArr[index] = list1[i]
+            i = i + 1
+        } else {
+            sumArr[index] = list2[j]
+            j = j + 1
+        }
+    }
+    if sumArr.count % 2 == 0 {
+        return Float((sumArr[sumArr.count / 2 - 1] + sumArr[sumArr.count / 2])) / 2.0
+    } else {
+        return Float(sumArr[(sumArr.count + 1)])
+    }
+}
+

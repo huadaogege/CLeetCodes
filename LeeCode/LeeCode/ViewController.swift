@@ -18,19 +18,26 @@ class ViewController: UIViewController {
         // let ret = sumOfTwoNum(items: nums, target: 34)
         
         // 题目二
-        let l1Vals = [2, 4, 3]
-        let list1 = initList(items: l1Vals)
+        // let l1Vals = [2, 4, 3]
+        // let list1 = initList(items: l1Vals)
         
-        let l2Vals = [5, 6, 4]
-        let list2 = initList(items: l2Vals)
+        // let l2Vals = [5, 6, 4]
+        // let list2 = initList(items: l2Vals)
         
-        let newList = addTwoNumbers(l1: list1, l2: list2)
-        printListNode(list: newList!)
+        // let newList = addTwoNumbers(l1: list1, l2: list2)
+        // printListNode(list: newList!)
         
         // 题目三
-        let s = "abcdeababcabcd"
-        let (max, subString) = maxLengthOfSubString(string: s)
-        print(max, subString)
+        // let s = "abcdeababcabcd"
+        // let (max, subString) = maxLengthOfSubString(string: s)
+        // print(max, subString)
+        
+        // 题目四
+        let l1 = [1, 3, 4, 5, 7, 9]
+        let l2 = [2, 4, 6, 8, 10, 11]
+        let middle = middleOfTwoList(list1: l1, list2: l2)
+        print(middle)
+        
         
         
         
