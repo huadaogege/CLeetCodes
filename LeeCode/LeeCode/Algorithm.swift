@@ -137,7 +137,12 @@ func maxLengthOfSubString(string: String) -> (Int, Array<Character>) {
 
 //MARK: 题目四：求两个正序数组的中位数
 
-func middleOfTwoList(list1:Array<Int>, list2:Array<Int>) -> Float {
+/// 方法一：先归并，再利用二分查找
+/// - Parameters:
+///   - list1: 数组1
+///   - list2: 数组2
+/// - Returns: 中位数
+func middleOfTwoList1(list1:Array<Int>, list2:Array<Int>) -> Float {
     var sumArr = [Int](repeating:0, count:(list1.count + list2.count))
     var i = 0
     var j = 0
@@ -153,7 +158,32 @@ func middleOfTwoList(list1:Array<Int>, list2:Array<Int>) -> Float {
     if sumArr.count % 2 == 0 {
         return Float((sumArr[sumArr.count / 2 - 1] + sumArr[sumArr.count / 2])) / 2.0
     } else {
-        return Float(sumArr[(sumArr.count + 1)])
+        return Float(sumArr[(sumArr.count / 2)])
     }
 }
 
+/// 方法二：满足时间复杂度是log2（m+n），由方法一启发，在归并的过程中，归并一半的时候
+///        就能知道中间位是多少了
+/// - Parameters:
+///   - list1: 数组1
+///   - list2: 数组2
+/// - Returns: 中位数
+func middleOfTwoList2(list1:Array<Int>, list2:Array<Int>) -> Float {
+    let sumCount = list1.count + list2.count;
+    var i = 0
+    var j = 0
+    while i + j < sumCount / 2 - 1 {
+        if (i < list1.count && list1[i] <= list2[j]) || j >= list2.count {
+            i = i + 1
+        } else {
+            j = j + 1
+        }
+    }
+    if sumCount % 2 == 0 {
+        return Float((list1[i] + list2[j])) / 2.0
+    }
+    if list1[i] > list2[j] {
+        return Float(list1[i])
+    }
+    return Float(list2[j])
+}

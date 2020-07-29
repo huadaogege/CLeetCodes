@@ -34,10 +34,12 @@ class ViewController: UIViewController {
         
         // 题目四
         let l1 = [1, 3, 4, 5, 7, 9]
-        let l2 = [2, 4, 6, 8, 10, 11]
-        let middle = middleOfTwoList(list1: l1, list2: l2)
+        let l2 = [2, 4, 6, 8, 10]
+        let middle = middleOfTwoList1(list1: l1, list2: l2)
         print(middle)
         
+        let middle2 = middleOfTwoList2(list1: l1, list2: l2)
+        print(middle2)
         
         
         
