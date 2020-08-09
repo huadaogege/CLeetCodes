@@ -187,3 +187,51 @@ func middleOfTwoList2(list1:Array<Int>, list2:Array<Int>) -> Float {
     }
     return Float(list2[j])
 }
+
+//MARK: 题目五：二叉树相关操作
+
+// 声明二叉树节点结构体
+public class TreeNode {
+    var data: Int
+    var lChild: TreeNode?
+    var rChild: TreeNode?
+    init(_ data: Int) {
+        self.data = data
+        self.lChild = nil
+        self.rChild = nil
+    }
+}
+
+// 创建二叉树
+func createTree(listData:[Int]) -> TreeNode? {
+    if listData.count == 0 {
+        return nil
+    }
+    let tree = TreeNode(-1)
+    for data in listData {
+        createTreeByPreOrder(tree: tree, data: data)
+    }
+    return tree
+}
+
+// 先序创建
+func createTreeByPreOrder(tree:TreeNode, data:Int) {
+    if tree.data == -1 {
+        tree.data = data
+        return
+    }
+    let middle = tree.data
+    if data < middle {
+        if tree.lChild == nil {
+            tree.lChild = TreeNode.init(data)
+        } else {
+            createTreeByPreOrder(tree: tree.lChild!, data: data)
+        }
+    } else {
+        if tree.rChild == nil {
+            tree.rChild = TreeNode.init(data)
+        } else {
+            createTreeByPreOrder(tree: tree.rChild!, data: data)
+        }
+    }
+}
